@@ -29,7 +29,7 @@ public class RecipeActivityIntentTest {
     private IdlingResource mIdlingResource;
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<RecipeActivity> mActivityTestRule = new ActivityTestRule<>(RecipeActivity.class);
 
     @Before
     public void registerIdlingResource() {

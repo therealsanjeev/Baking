@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 import static com.therealsanjeev.baking.utilities.Constant.GRID_COLUMN_WIDTH;
 
-public class MainActivity extends AppCompatActivity implements RecipeAdapter.RecipeClickListener {
+public class RecipeActivity extends AppCompatActivity implements RecipeAdapter.RecipeClickListener {
 
     private RecipeAdapter mRecipeAdapter;
     private BakingAPI mBakingService;
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
     protected void onCreate( @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(MainActivity.this);
-        mBakingService = BakingHelper.getInstance(MainActivity.this);
+        ButterKnife.bind(RecipeActivity.this);
+        mBakingService = BakingHelper.getInstance(RecipeActivity.this);
         layoutManager = new GridAutofitLayoutManager(
                 this, GRID_COLUMN_WIDTH);
 
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
             public void onResponse(@NonNull Call<List<Recipe>> call, @NonNull Response<List<Recipe>> response) {
 
                 if(response.isSuccessful()){
-                    mRecipeAdapter = new RecipeAdapter(response.body(),getApplicationContext(),MainActivity.this);
+                    mRecipeAdapter = new RecipeAdapter(response.body(),getApplicationContext(), RecipeActivity.this);
                     recipesListRecyclerView.setLayoutManager(layoutManager);
                     recipesListRecyclerView.setAdapter(mRecipeAdapter);
                 }
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
         updateSharedPreference(recipe);
         sendBroadcastToWidget();
 
-        Intent intent = new Intent(MainActivity.this, RecipeDetailsActivity.class);
+        Intent intent = new Intent(RecipeActivity.this, RecipeDetailsActivity.class);
         intent.putExtra(Constant.RECIPE,b);
         startActivity(intent);
     }

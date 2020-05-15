@@ -12,7 +12,7 @@ import android.widget.RemoteViews;
 
 import androidx.preference.PreferenceManager;
 
-import com.therealsanjeev.baking.MainActivity;
+import com.therealsanjeev.baking.RecipeActivity;
 import com.therealsanjeev.baking.R;
 import com.therealsanjeev.baking.RecipeDetailsActivity;
 import com.therealsanjeev.baking.model.Ingredient;
@@ -50,7 +50,7 @@ public class RecipeWidgetProvider extends AppWidgetProvider {
 
 
         if (ingredientString.isEmpty() || stepString.isEmpty()) {
-            intent = new Intent(context, MainActivity.class);
+            intent = new Intent(context, RecipeActivity.class);
             views.setTextViewText(R.id.widget_recipe_name, context.getString(R.string.app_name));
         } else {
             intent = new Intent(context, RecipeDetailsActivity.class);
